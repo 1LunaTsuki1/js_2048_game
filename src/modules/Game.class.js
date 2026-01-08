@@ -38,6 +38,10 @@ class Game {
   }
 
   _processRow(row) {
+    if (this.status !== 'playing') {
+      return;
+    }
+
     const filterArray = [];
 
     for (let i = 0; i < row.length; i++) {

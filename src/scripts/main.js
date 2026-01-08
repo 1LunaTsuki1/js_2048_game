@@ -36,6 +36,13 @@ startButton.addEventListener('click', () => {
 
   if (game.getStatus() === 'idle') {
     game.start();
+
+    if (!clicked) {
+      startButton.classList.remove('start');
+      startButton.classList.add('restart');
+      startButton.textContent = 'Restart'; // З великої літери виглядає краще ;)
+      clicked = true;
+    }
   } else {
     if (game.getScore() > bestScoreValue) {
       bestScoreValue = game.getScore();
@@ -53,13 +60,6 @@ document.addEventListener('keydown', keydownEv);
 function keydownEv(ev) {
   if (game.getStatus() !== 'playing') {
     return;
-  }
-
-  if (!clicked) {
-    startButton.classList.remove('start');
-    startButton.classList.add('restart');
-    startButton.textContent = 'Restart'; // З великої літери виглядає краще ;)
-    clicked = true;
   }
 
   let madeMove = false;
